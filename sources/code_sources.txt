@@ -5,3 +5,7 @@ filters => https://stackoverflow.com/questions/21974597/leaflet-js-is-it-possibl
 
 updating => https://gis.stackexchange.com/questions/412556/updating-the-filter-option-for-geojson-layer-in-leaflet
             https://gis.stackexchange.com/questions/244816/leaflet-remove-a-specific-type-of-features-from-featuregroup
+
+legend => https://www.igismap.com/legend-in-leafletjs-map-with-topojson/
+
+hover => https://stackoverflow.com/questions/27748453/mouseover-actions-with-geojson-polygon
