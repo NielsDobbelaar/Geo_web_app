@@ -44,11 +44,11 @@
             <h2 class="controls-wrapper__filters__heading">Kaartlagen</h2>
             <form class="controls-wrapper__filterSection">
                 <p class="controls-wrapper__lagen__p u_two_grid_columns">Kies een kaartlaag: </p>
-                <input type="radio" checked="true" id="diefstal_radio" name="kaartlaag" value="diefstal">
+                <input type="radio" onclick="layerHandler(1)" checked="true" id="diefstal_radio" name="kaartlaag" value="diefstal">
                 <label class="controls-wrapper__radio__label" for="diefstal">diefstal</label>
-                <input type="radio" id="basischool_radio" name="kaartlaag" value="CSS">
+                <input type="radio" onclick="layerHandler(2)" id="basischool_radio" name="kaartlaag" value="CSS">
                 <label class="controls-wrapper__radio__label" for="basischool">basischool</label>
-                <input type="radio" id="huisarts_radio" name="kaartlaag" value="CSS">
+                <input type="radio" onclick="layerHandler(3)" id="huisarts_radio" name="kaartlaag" value="CSS">
                 <label class="controls-wrapper__radio__label" for="huisarts">huisarts</label>
             </form>
         </section>
