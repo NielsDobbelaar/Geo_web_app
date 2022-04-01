@@ -3,6 +3,7 @@ proj4.defs("urn:ogc:def:crs:EPSG::28992", "+proj=sterea +lat_0=52.15616055555555
 var map = L.map('map').setView([52.22107, 5.218506], 8);
 
 var features_list = [];  
+
 ////////////////////////////////////////////////////////////////
 //making map layers 
 //diefstallaag
@@ -28,32 +29,32 @@ var diefstalLayer = L.Proj.geoJson(dataFile, {
                 return {fillColor: 'red',
                 weight: 1,
                 fillOpacity: 0.9,
-                color: 'white'}
-                case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 53.3):
-                    return {fillColor: '#F7610C',
-                    weight: 1,
-                    fillOpacity: 0.9,
-                    color: 'white'}
-                case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 44.4):
-                    return {fillColor: '#EBDE01',
-                    weight: 1,
-                    fillOpacity: 0.9,
-                    color: 'white'}
-                case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 33.3):
-                    return {fillColor: '#9EEB01',
-                    weight: 1,
-                    fillOpacity: 0.9,
-                    color: 'white'}
-                case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 12.8):
-                    return {fillColor: '#0BD431',
-                    weight: 1,
-                    fillOpacity: 0.9,
-                    color: 'white'}
+                color: 'black'}
+            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 53.3):
+                return {fillColor: '#F7610C',
+                weight: 1,
+                fillOpacity: 0.9,
+                color: 'black'}
+            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 44.4):
+                return {fillColor: '#EBDE01',
+                weight: 1,
+                fillOpacity: 0.9,
+                color: 'black'}
+            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 33.3):
+                return {fillColor: '#9EEB01',
+                weight: 1,
+                fillOpacity: 0.9,
+                color: 'black'}
+            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 12.8):
+                return {fillColor: '#0BD431',
+                weight: 1,
+                fillOpacity: 0.9,
+                color: 'black'}
             default:
                 return {fillColor: 'white',
                 weight: 1,
                 fillOpacity: 0.3,
-                color: 'white'}
+                color: 'black'}
           }
         
     }
@@ -75,30 +76,30 @@ var schoolLayer = L.Proj.geoJson(dataFile, {
     style: function(feature) {
         switch(true) {
             case (feature.properties.voorzieningen_afstand_tot_kinderdagverblijf_km > 0.9):
-                return {fillColor: '#ff00c8',
+                return {fillColor: '#ffffcc',
                 weight: 1,
                 fillOpacity: 0.9,
-                color: 'white'}
+                color: 'black'}
             case (feature.properties.voorzieningen_afstand_tot_kinderdagverblijf_km >= 0.8):
-                return {fillColor: '#fb40a0',
+                return {fillColor: '#bae4bc',
                 weight: 1,
                 fillOpacity: 0.9,
-                color: 'white'}
+                color: 'black'}
             case (feature.properties.voorzieningen_afstand_tot_kinderdagverblijf_km >= 0.7):
-                return {fillColor: '#f68078',
+                return {fillColor: '#7bccc4',
                 weight: 1,
                 fillOpacity: 0.9,
-                color: 'white'}
+                color: 'black'}
             case (feature.properties.voorzieningen_afstand_tot_kinderdagverblijf_km >= 0.6):
-                return {fillColor: '#f2bf4f',
+                return {fillColor: '#43a2ca',
                 weight: 1,
                 fillOpacity: 0.9,
-                color: 'white'}
+                color: 'black'}
             case (feature.properties.voorzieningen_afstand_tot_kinderdagverblijf_km >= 0.3):
-                return {fillColor: '#edff27',
+                return {fillColor: '#0868ac',
                 weight: 1,
                 fillOpacity: 0.9,
-                color: 'white'}
+                color: 'black'}
             default:
                 return {fillColor: 'white',
                 weight: 1,
@@ -124,27 +125,27 @@ var zorgLayer = L.Proj.geoJson(dataFile, {
     style: function(feature) {
         switch(true) {
             case (feature.properties.voorzieningen_afstand_tot_huisarts_km > 2.32):
-                return {fillColor: '#1e00ff',
+                return {fillColor: '#feebe2',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'white'}
             case (feature.properties.voorzieningen_afstand_tot_huisarts_km >= 1.84):
-                return {fillColor: '#5600fd',
+                return {fillColor: '#fbb4b9',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'white'}
             case (feature.properties.voorzieningen_afstand_tot_huisarts_km >= 1.36):
-                return {fillColor: '#8e00fb',
+                return {fillColor: '#f768a1',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'white'}
             case (feature.properties.voorzieningen_afstand_tot_huisarts_km >= 0.88):
-                return {fillColor: '#c700f9',
+                return {fillColor: '#c51b8a',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'white'}
             case (feature.properties.voorzieningen_afstand_tot_huisarts_km >= 0.4):
-                return {fillColor: '#ff00f7',
+                return {fillColor: '#7a0177',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'white'}
@@ -164,6 +165,107 @@ currentLayer = diefstalLayer;
 currentLayer.addTo(map);
 
 
+/////////////////////////////////////////////////////////////////
+//legendLayer
+
+function diefstalGetColor(v) {
+    return v > 66.4 ? 'red' :
+           v > 53.3  ? '#F7610C' :
+           v > 44.4  ? '#EBDE01' :
+           v > 33.3  ? '#9EEB01' :
+           v > 12.8   ? '#0BD431' :
+                      'white';
+}
+var diefstalLegend = L.control({
+  position: 'bottomright'
+});
+diefstalLegend.onAdd = function() {
+    var div = L.DomUtil.create('div', 'infolegend');
+
+    var grades = [12.8, 33.8, 44.4, 53.3, 66.4];
+    var labels = [];
+    var from, to;
+    labels.push('<h2 class="legendHeader" ">Aantal inwoners per diefstal</h2>')
+  for (var i = 0; i < grades.length - 1; i++) {
+    from = grades[i];
+    to = grades[i + 1];
+    labels.push(
+      '<section class="legendColor" style="background:' + diefstalGetColor(from + 1) + '"></section> ' + '<p class="legendP">'+ from + " - " + to  +'</p>');
+  }
+  labels.push('<section  class="legendColor" style="background:' + diefstalGetColor(grades[4]+1) + '"></section> <p class="legendP"> ' + grades[4] + '+ </p>');
+  labels.push('<section class="legendColor" style="background:' + diefstalGetColor(1) + '"></section> ' + ' <p class="legendP">Geen data</p>');
+  div.innerHTML = labels.join('<br>');
+  return div;
+};
+
+
+function schoollGetColor(v) {
+    return v == 0.9 ? '#ffffcc' :
+           v == 0.8  ? '#bae4bc' :
+           v == 0.7  ? '#7bccc4' :
+           v == 0.6  ? '#43a2ca' :
+           v == 0.3   ? '#0868ac' :
+                      'white';
+}
+var schoolLegend = L.control({
+  position: 'bottomright'
+});
+
+schoolLegend.onAdd = function() {
+    var div = L.DomUtil.create('div', 'infolegend');
+
+    var grades = [0.3, 0.6, 0.7, 0.8, 0.9];
+    var labels = [];
+    var from, to;
+    labels.push('<h2 class="legendHeader" ">Gemmiddelde afstand tot een kinderdagverblijf (km)</h2>')
+  for (var i = 0; i < grades.length - 1; i++) {
+    from = grades[i];
+    to = grades[i + 1];
+    labels.push(
+      '<section class="legendColor" style="background:' + schoollGetColor(from) + '"></section> ' + '<p class="legendP">'+ from + " - " + to  +'</p>');
+  }
+  labels.push('<section  class="legendColor" style="background:' + schoollGetColor(grades[4]) + '"></section> <p class="legendP"> ' + grades[4] + '+ </p>');
+  labels.push('<section class="legendColor" style="background:' + schoollGetColor(1) + '"></section> ' + ' <p class="legendP">Geen data</p>');
+  div.innerHTML = labels.join('<br>');
+  return div;
+};
+
+function zorgGetColor(v) {
+    
+    return v == 2.32 ? '#feebe2' :
+           v == 1.84  ? '#fbb4b9' :
+           v == 1.36  ? '#f768a1' :
+           v == 0.88  ? '#c51b8a' :
+           v == 0.4   ? '#7a0177' :
+                      'white';
+}
+var zorgLegend = L.control({
+  position: 'bottomright'
+});
+
+zorgLegend.onAdd = function() {
+    var div = L.DomUtil.create('div', 'infolegend');
+
+    var grades = [0.4, 0.88, 1.36, 1.84, 2.32];
+    var labels = [];
+    var from, to;
+    labels.push('<h2 class="legendHeader" ">Gemmiddelde afstand tot een huisarts (km)</h2>')
+  for (var i = 0; i < grades.length - 1; i++) {
+    from = grades[i];
+    to = grades[i + 1];
+    labels.push(
+      '<section class="legendColor" style="background:' + zorgGetColor(from) + '"></section> ' + '<p class="legendP">'+ from + " - " + to  +'</p>');
+  }
+  labels.push('<section  class="legendColor" style="background:' + zorgGetColor(grades[4]) + '"></section> <p class="legendP"> ' + grades[4] + '+ </p>');
+  labels.push('<section class="legendColor" style="background:' + zorgGetColor(1) + '"></section> ' + ' <p class="legendP">Geen data</p>');
+  div.innerHTML = labels.join('<br>');
+  return div;
+};
+
+
+currentLegenda = diefstalLegend;
+currentLegenda.addTo(map);
+
 ////////////////////////////////////////////////////////////////
 //changing layers
 
@@ -173,6 +275,8 @@ var diefstalRadioDot = document.getElementById('diefstal_radio');
 var schoolRadioDot = document.getElementById('basischool_radio');
 var zorgRadioDot = document.getElementById('huisarts_radio');
 
+
+//changing layer function
 const layerHandler = (l) => {
     switch (l) {
         case 1:
@@ -184,6 +288,10 @@ const layerHandler = (l) => {
                 map.removeLayer(currentLayer);
                 currentLayer = diefstalLayer;
                 currentLayer.addTo(map);
+
+                map.removeControl(currentLegenda);
+                currentLegenda = diefstalLegenda;
+                currentLegenda.addTo(map);
                 
                 filterFunction()
             }
@@ -198,6 +306,10 @@ const layerHandler = (l) => {
                 currentLayer = schoolLayer;
                 currentLayer.addTo(map);
                 
+                map.removeControl(currentLegenda);
+                currentLegenda = schoolLegend;
+                currentLegenda.addTo(map);
+
                 filterFunction()
             }
             break;
@@ -211,17 +323,16 @@ const layerHandler = (l) => {
                 currentLayer = zorgLayer;
                 currentLayer.addTo(map);
                 
+                map.removeControl(currentLegenda);
+                currentLegenda = zorgLegend;
+                currentLegenda.addTo(map);
+
                 filterFunction()
             }
             break;
     }
 }
 
-
-//change layer function
-const changeLayer = (newLayer) => {
-    return 1;
-}
 
 
 ////////////////////////////////////////////////////////////////
