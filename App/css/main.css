@@ -132,6 +132,83 @@ p{
     padding-top: 1rem;
 }
 
+.overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background:black;
+    z-index: 1002;
+    opacity: 0.8;
+}
+
+.homeMenu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1003;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeMenu__section{
+    padding: 3rem;
+    width: 70rem;
+    height: 40rem;
+    border-radius: 5rem;
+    background: rgb(255,221,221);
+background: linear-gradient(273deg, rgba(255,221,221,1) 0%, rgba(255,232,191,1) 52%, rgba(219,255,224,1) 100%);
+}
+z
+.homeMenu__textSection{
+    width: 100%;
+    height:70%;
+    padding-bottom: 3rem;
+}
+
+.homeMenu__buttonSection{
+    width: 100%;
+    height:30%;
+    margin-top: 8rem;
+    display: flex;
+    justify-content: center;
+}
+
+.homeMenu__title{
+    width: 100%;
+    text-align: center;
+    height: auto;
+    margin: auto 0;
+    padding-bottom: 5rem;
+    font-size: 200%;
+}
+
+
+.homeMenu__button{
+    width: 16rem;
+    height: 5rem;
+    padding: 1rem;
+    background: #07689f;
+    color: white;
+    font-size: 110%;
+    border: none;
+    margin: 0 auto;
+    transition: all 0.2s;
+    box-shadow: 11px 12px 35px -2px #07689F;
+}
+
+.homeMenu__button:hover{
+    transform: translateY(-1rem) scale(1.2);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
 #gemeente_Box{
     background: white;
     padding: 0.3rem;

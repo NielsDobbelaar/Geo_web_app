@@ -425,3 +425,11 @@ const filterFunction = () => {
 
 
 var checkbox_diefstal = document.getElementById('diefstal_radio');
+
+
+
+const clearMenu = () =>{
+    for(let item of document.getElementsByClassName("menuclear")){
+        item.style.display = "none";
+    }
+}
