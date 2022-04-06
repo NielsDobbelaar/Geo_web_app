@@ -18,10 +18,20 @@ var diefstalLayer = L.Proj.geoJson(dataFile, {
         }
         layer.bindPopup(
                 "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
-             +  "<p class='popup__paragraph'>Inwoners per diefstal - " + diefstal_value + "</p>"
-             +  "<p class='popup__paragraph'>basisscholen binnen 3 km - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + "</p>"
-             +  "<p class='popup__paragraph'>afstand tot huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + "</p>"
+             +  "<p class='popup__paragraph'>Aatal inwoners per diefstal - " + diefstal_value + "</p>"
+             +  "<p class='popup__paragraph'>Gemiddelde afstand tot een school - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
+             +  "<p class='popup__paragraph'>Gemiddelde afstand tot een huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + " KM</p>"
             )
+        layer.on('mouseover', function () {
+            this.setStyle({
+                'fillOpacity': '0.2'
+            });
+            });
+            layer.on('mouseout', function () {
+            this.setStyle({
+                'fillOpacity': '0.9'
+            });
+            });
     },
     style: function(feature) {
         switch(true) {
@@ -67,11 +77,21 @@ var schoolLayer = L.Proj.geoJson(dataFile, {
             diefstal_value = Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10
         }
         layer.bindPopup(
-                "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
-             +  "<p class='popup__paragraph'>Inwoners per diefstal - " + diefstal_value + "</p>"
-             +  "<p class='popup__paragraph'>afstand tot kinderdagverblijf - " + feature.properties.voorzieningen_afstand_tot_kinderdagverblijf_km + "</p>"
-             +  "<p class='popup__paragraph'>afstand tot huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + "</p>"
-            )
+            "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
+         +  "<p class='popup__paragraph'>Aatal inwoners per diefstal - " + diefstal_value + "</p>"
+         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een school - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
+         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + " KM</p>"
+        )
+        layer.on('mouseover', function () {
+            this.setStyle({
+                'fillOpacity': '0.2'
+            });
+            });
+            layer.on('mouseout', function () {
+            this.setStyle({
+                'fillOpacity': '0.9'
+            });
+            });
     },
     style: function(feature) {
         switch(true) {
@@ -116,11 +136,21 @@ var zorgLayer = L.Proj.geoJson(dataFile, {
             diefstal_value = Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10
         }
         layer.bindPopup(
-                "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
-             +  "<p class='popup__paragraph'>Inwoners per diefstal - " + diefstal_value + "</p>"
-             +  "<p class='popup__paragraph'>basisscholen binnen 3 km - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + "</p>"
-             +  "<p class='popup__paragraph'>afstand tot huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + "</p>"
-            )
+            "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
+         +  "<p class='popup__paragraph'>Aatal inwoners per diefstal - " + diefstal_value + "</p>"
+         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een school - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
+         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + " KM</p>"
+        )
+        layer.on('mouseover', function () {
+            this.setStyle({
+                'fillOpacity': '0.2'
+            });
+            });
+            layer.on('mouseout', function () {
+            this.setStyle({
+                'fillOpacity': '0.9'
+            });
+            });
     },
     style: function(feature) {
         switch(true) {
