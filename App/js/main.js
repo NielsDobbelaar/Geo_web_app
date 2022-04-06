@@ -70,6 +70,7 @@ var diefstalLayer = L.Proj.geoJson(dataFile, {
     }
 });
 
+//schoolen laag
 var schoolLayer = L.Proj.geoJson(dataFile, {
     onEachFeature: function (feature, layer) {
         diefstal_value = "niet beschikbaar";
@@ -129,6 +130,8 @@ var schoolLayer = L.Proj.geoJson(dataFile, {
     }
 });
 
+
+//zorg laag
 var zorgLayer = L.Proj.geoJson(dataFile, {
     onEachFeature: function (feature, layer) {
         diefstal_value = "niet beschikbaar";
