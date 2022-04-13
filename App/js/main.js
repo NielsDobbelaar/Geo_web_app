@@ -1,4 +1,12 @@
 
+//fix
+// diefstal kleuren
+// diefstal legenda
+// legenda spelling
+// legenda school
+
+
+
 proj4.defs("urn:ogc:def:crs:EPSG::28992", "+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +no_defsa");
 var map = L.map('map').setView([52.22107, 5.218506], 8);
 
@@ -13,13 +21,13 @@ console.log(dataFile.features[53].properties);
 var diefstalLayer = L.Proj.geoJson(dataFile, {
     onEachFeature: function (feature, layer) {
         diefstal_value = "niet beschikbaar";
-        if(Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10 > 0 ){
-            diefstal_value = Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10
+        if(Math.round(feature.properties.diefstalGegevens_diefstal_per_1000_inwoners * 10) / 10 > 0 ){
+            diefstal_value = Math.round(feature.properties.diefstalGegevens_diefstal_per_1000_inwoners * 10) / 10
         }
         layer.bindPopup(
                 "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
-             +  "<p class='popup__paragraph'>Aatal inwoners per diefstal - " + diefstal_value + "</p>"
-             +  "<p class='popup__paragraph'>Gemiddelde afstand tot een school - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
+             +  "<p class='popup__paragraph'>Aantal diefstallen per 1000 inwoners - " + diefstal_value + "</p>"
+             +  "<p class='popup__paragraph'>Gemiddelde afstand tot een kinderdagverblijf - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
              +  "<p class='popup__paragraph'>Gemiddelde afstand tot een huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + " KM</p>"
             )
         layer.on('mouseover', function () {
@@ -35,28 +43,28 @@ var diefstalLayer = L.Proj.geoJson(dataFile, {
     },
     style: function(feature) {
         switch(true) {
-            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 66.4):
-                return {fillColor: 'red',
+            case (feature.properties.diefstalGegevens_diefstal_per_1000_inwoners >= 30.1):
+                return {fillColor: '#006837',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'black'}
-            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 53.3):
-                return {fillColor: '#F7610C',
+            case (feature.properties.diefstalGegevens_diefstal_per_1000_inwoners >= 22.6):
+                return {fillColor: '#31a354',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'black'}
-            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 44.4):
-                return {fillColor: '#EBDE01',
+            case (feature.properties.diefstalGegevens_diefstal_per_1000_inwoners >= 18.8):
+                return {fillColor: '#78c679',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'black'}
-            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 33.3):
-                return {fillColor: '#9EEB01',
+            case (feature.properties.diefstalGegevens_diefstal_per_1000_inwoners >= 15.1):
+                return {fillColor: '#c2e699',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'black'}
-            case (feature.properties.diefstalGegevens_inwoners_per_diefstal >= 12.8):
-                return {fillColor: '#0BD431',
+            case (feature.properties.diefstalGegevens_diefstal_per_1000_inwoners >= 6.7):
+                return {fillColor: '#ffffcc',
                 weight: 1,
                 fillOpacity: 0.9,
                 color: 'black'}
@@ -74,13 +82,13 @@ var diefstalLayer = L.Proj.geoJson(dataFile, {
 var schoolLayer = L.Proj.geoJson(dataFile, {
     onEachFeature: function (feature, layer) {
         diefstal_value = "niet beschikbaar";
-        if(Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10 > 0 ){
-            diefstal_value = Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10
+        if(Math.round(feature.properties.diefstalGegevens_diefstal_per_1000_inwoners * 10) / 10 > 0 ){
+            diefstal_value = Math.round(feature.properties.diefstalGegevens_diefstal_per_1000_inwoners * 10) / 10
         }
         layer.bindPopup(
             "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
-         +  "<p class='popup__paragraph'>Aatal inwoners per diefstal - " + diefstal_value + "</p>"
-         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een school - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
+         +  "<p class='popup__paragraph'>Aantal diefstallen per 1000 inwoners - " + diefstal_value + "</p>"
+         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een kinderdagverblijf - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
          +  "<p class='popup__paragraph'>Gemiddelde afstand tot een huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + " KM</p>"
         )
         layer.on('mouseover', function () {
@@ -135,13 +143,13 @@ var schoolLayer = L.Proj.geoJson(dataFile, {
 var zorgLayer = L.Proj.geoJson(dataFile, {
     onEachFeature: function (feature, layer) {
         diefstal_value = "niet beschikbaar";
-        if(Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10 > 0 ){
-            diefstal_value = Math.round(feature.properties.diefstalGegevens_inwoners_per_diefstal * 10) / 10
+        if(Math.round(feature.properties.diefstalGegevens_diefstal_per_1000_inwoners * 10) / 10 > 0 ){
+            diefstal_value = Math.round(feature.properties.diefstalGegevens_diefstal_per_1000_inwoners * 10) / 10
         }
         layer.bindPopup(
             "<h1 class='popup__heading'>Gemeente " +feature.properties.GM_NAAM + "</h1>"
-         +  "<p class='popup__paragraph'>Aatal inwoners per diefstal - " + diefstal_value + "</p>"
-         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een school - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
+         +  "<p class='popup__paragraph'>Aantal diefstallen per 1000 inwoners - " + diefstal_value + "</p>"
+         +  "<p class='popup__paragraph'>Gemiddelde afstand tot een kinderdagverblijf - " + Math.floor(feature.properties.voorzieningen_aantal_basisscholen_binnen_3_km) + " KM</p>"
          +  "<p class='popup__paragraph'>Gemiddelde afstand tot een huisarts - " + feature.properties.voorzieningen_afstand_tot_huisarts_km + " KM</p>"
         )
         layer.on('mouseover', function () {
@@ -202,11 +210,11 @@ currentLayer.addTo(map);
 //legendLayer
 
 function diefstalGetColor(v) {
-    return v > 66.4 ? 'red' :
-           v > 53.3  ? '#F7610C' :
-           v > 44.4  ? '#EBDE01' :
-           v > 33.3  ? '#9EEB01' :
-           v > 12.8   ? '#0BD431' :
+    return v > 30 ? '#006837' :
+           v > 22.6  ? '#31a354' :
+           v > 18.8  ? '#78c679' :
+           v > 15.1  ? '#c2e699' :
+           v > 6.7   ? '#ffffcc' :
                       'white';
 }
 var diefstalLegend = L.control({
@@ -215,10 +223,10 @@ var diefstalLegend = L.control({
 diefstalLegend.onAdd = function() {
     var div = L.DomUtil.create('div', 'infolegend');
 
-    var grades = [12.8, 33.8, 44.4, 53.3, 66.4];
+    var grades = [6.7, 15.1, 18.8, 22.6, 30];
     var labels = [];
     var from, to;
-    labels.push('<h2 class="legendHeader" ">Aantal inwoners per diefstal</h2>')
+    labels.push('<h2 class="legendHeader" ">Aantal diefstallen per 1000 inwoners</h2>')
   for (var i = 0; i < grades.length - 1; i++) {
     from = grades[i];
     to = grades[i + 1];
@@ -250,7 +258,7 @@ schoolLegend.onAdd = function() {
     var grades = [0.3, 0.6, 0.7, 0.8, 0.9];
     var labels = [];
     var from, to;
-    labels.push('<h2 class="legendHeader" ">Gemmiddelde afstand tot een kinderdagverblijf (km)</h2>')
+    labels.push('<h2 class="legendHeader" ">Gemiddelde afstand tot een kinderdagverblijf (km)</h2>')
   for (var i = 0; i < grades.length - 1; i++) {
     from = grades[i];
     to = grades[i + 1];
@@ -282,7 +290,7 @@ zorgLegend.onAdd = function() {
     var grades = [0.4, 0.88, 1.36, 1.84, 2.32];
     var labels = [];
     var from, to;
-    labels.push('<h2 class="legendHeader" ">Gemmiddelde afstand tot een huisarts (km)</h2>')
+    labels.push('<h2 class="legendHeader" ">Gemiddelde afstand tot een huisarts (km)</h2>')
   for (var i = 0; i < grades.length - 1; i++) {
     from = grades[i];
     to = grades[i + 1];
@@ -323,7 +331,7 @@ const layerHandler = (l) => {
                 currentLayer.addTo(map);
 
                 map.removeControl(currentLegenda);
-                currentLegenda = diefstalLegenda;
+                currentLegenda = diefstalLegend;
                 currentLegenda.addTo(map);
                 
                 filterFunction()

@@ -29,9 +29,9 @@ p{
 }
 
 .popup__paragraph{
-    font-size: 110%;
+    font-size: 100%;
     padding-left: 0.5rem;
-    color: red;
+    color: black;
 }
 
 .leaflet-popup-content-wrapper {
