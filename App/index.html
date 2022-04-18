@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <script src="js/proj4.js" defer></script>
+    <script src="js/proj4leaflet.js" defer></script>
+    <script src="layers/full_V6.geojson" type="text/javascript"></script>
+    <script src="js/main.js" defer></script>
+    <title>maps</title>
+</head>
+<body>
+    <div id="map"></div>
+
+    <article class="overlay menuclear"></article>
+
+    
+    <article class="homeMenu menuclear">
+        <section class="homeMenu__section">
+            <section class="homeMenu__textSection">
+                <h1 class="homeMenu__title">Wonen met kinderen.</h1>
+                <p class="homeMenu__text"> Op deze pagina kunt u met de hulp van een interactieve kaart met filters en 3 verschillende kaartlagen met per gemeente informatie over de aanwezigheid van diefstal, scholen en artsen een keuze maken over wat de beste gemeente is om met uw kind(-eren) te gaan wonen.</p>
+            </section>
+            <section class="homeMenu__buttonSection">
+                <button class="homeMenu__button" onclick="clearMenu()">begin!</button>
+            </section> 
+        </section>
+    </article> 
+
+
+    <article class="controls-wrapper">
+        <section class="controls-wrapper__filters">
+            <h2 class="controls-wrapper__filters__heading">Filters:</h2>
+            <form class="controls-wrapper__filterSection">
+                <label class="u_two_grid_columns" for="inwoner_slider">Maximale aantal inwoners:</label>
+                <input type="range" list="tickmarks" id="inwoner_slider" value="872757" name="inwoner_slider" min="0" max="872757">
+                <p id="slider_P" class="controls-wrapper__p">872757</p>
+                <datalist id="tickmarks">
+                    <option value="0"></option>
+                    <option value="436378"></option>
+                    <option value="872757"></option>
+                </datalist>
+            </form>
+            <section class="controls-wrapper__filterSection">
+                <label class="u_two_grid_columns" for="gemeente">Zoek een gemeente</label>
+                <input class="u_two_grid_columns" placeholder="Vul hier een gemeente in" type="text" name="gemeente" id="gemeente_Box">
+                <button onclick="zoekGemeente()" class="controls-wrapper__button">Zoek</button>
+                <button onclick="clearGemeente()"class="controls-wrapper__button">Clear</button>
+            </section>
+        </section>
+        <section class="controls-wrapper__filters">
+            <h2 class="controls-wrapper__filters__heading">Kaartlagen</h2>
+            <form class="controls-wrapper__filterSection">
+                <p class="controls-wrapper__lagen__p u_two_grid_columns">Kies een kaartlaag: </p>
+                <input type="radio" onclick="layerHandler(1)" checked="true" id="diefstal_radio" name="kaartlaag" value="diefstal">
+                <label class="controls-wrapper__radio__label" for="diefstal">diefstal</label>
+                <input type="radio" onclick="layerHandler(2)" id="basischool_radio" name="kaartlaag" value="CSS">
+                <label class="controls-wrapper__radio__label" for="basischool">kinderdagverblijf</label>
+                <input type="radio" onclick="layerHandler(3)" id="huisarts_radio" name="kaartlaag" value="CSS">
+                <label class="controls-wrapper__radio__label" for="huisarts">huisarts</label>
+            </form>
+        </section>
+    </article>
+</body>
+</html>
